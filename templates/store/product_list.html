@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Product list
+{% endblock title %}
+
+{% block page_name %}
+  Product list  
+{% endblock page_name %}
+
+{% block content %}
+
+
+<div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <div class="mb-2">
+            <form action="" method="GET">
+              {% csrf_token %}
+              <div class="flex flex-row items-center">
+                <div class="text-xl mr-2">Search by product name: </div>
+                <div class="flex flex-row space-x-2">
+                  <input type="submit" value="Search" class="bg-gray-300 hover:bg-gray-400 border rounded px-2 py-2">
+                  <input type="text" name="product_name" class="border rounded" value="{{product_name}}">
+                </div>
+              </div>
+            </form>
+          </div>
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                  Product name
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Price
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Stock
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Manufacturer
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for object in object_list %}
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <a href="{% url 'store:product_detail' pk=object.id %}" class="underline">
+                {{object.name}}
+              </a>
+            </th>
+            <td class="px-6 py-4">
+                {{object.price}}
+            </td>
+            <td class="px-6 py-4">
+                {{object.stock}}
+            </td>
+            <td class="px-6 py-4">
+                {{object.manufacturer.name}}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+</div>
+
+{% endblock content %}

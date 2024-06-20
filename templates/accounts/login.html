@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Login
+{% endblock title %}
+
+{% block page_name %}
+  Login 
+  {{ block.super }}
+{% endblock page_name %}
+
+{% block content %}
+<div class="flex flex-col items-center">
+  {% include 'show_form_errors.html' with form=form %}
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="mb-5">
+      <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.username.label}}</div>
+      <div>{{form.username}}</div>
+    </div>
+    <div class="mb-5">
+      <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.password.label}}</div>
+      <div>{{form.password}}</div>
+    </div>
+    <div class="mb-5">
+      <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.remember.label}}</div>
+      <div>{{form.remember}}</div>
+    </div>
+
+    <div class="text-center">
+      {% include 'primary_button.html' with value='Login' %}
+    </div>
+  </form>
+</div>
+{% endblock content %}

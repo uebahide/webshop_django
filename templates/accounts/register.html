@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Register
+{% endblock title %}
+
+{% block page_name %}
+  Register 
+  {{ block.super }}
+{% endblock page_name %}
+
+{% block content %}
+<div class="flex flex-col items-center">
+  {% include 'show_form_errors.html' with form=form %}
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="mb-5">
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.name.label}}</label>
+      <div>{{form.name}}</div>
+    </div>
+    <div class="mb-5">
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.email.label}}</label>
+      <div>{{form.email}}</div>
+    </div>
+    <div class="mb-5">
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.password.label}}</label>
+      <div>{{form.password}}</div>
+    </div>
+    <div class="mb-5">
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.confirm_password.label}}</label>
+      <div>{{form.confirm_password}}</div>
+    </div>
+
+    <div class="text-center">
+      {% include 'primary_button.html' with value='Submit' %}
+    </div>
+  </form>
+</div>
+{% endblock content %}

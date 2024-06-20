@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Product detail
+{% endblock title %}
+
+{% block page_name %}
+  Product detail
+{% endblock page_name %}
+
+{% block content %}
+
+<div class="w-1/2 mx-auto border rounded-lg px-2 pt-20">
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    {% for picture in object.product_pictures.all %}
+      <div>
+          <img 
+            class="h-40 h-40 rounded-lg" 
+            src="{{picture.picture.url}}" alt="">
+      </div>
+      {% endfor %}
+      <div class="text-xl">
+        <div>Product name: {{object.name}}</div>
+        <div>Price : ${{object.price}}</div>
+        <div>Stock: {{object.stock}}</div>
+      </div>
+
+    </div>
+</div>
+
+{% endblock content %}
