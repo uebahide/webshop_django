@@ -1,0 +1,2 @@
+- Please make sure your environment already installed django
+- execute $python manage.py runserver
